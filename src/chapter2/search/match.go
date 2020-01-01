@@ -1,6 +1,9 @@
 package search
 
-import "log"
+import (
+	"fmt"
+	"log"
+)
 
 // Result 保存搜索的结果
 type Result struct {
@@ -27,5 +30,15 @@ func Match(matcher Matcher, feed *Feed, searchTerm string, results chan<- *Resul
 	// 将结果写入通道
 	for _, result := range searchResults {
 		results <- result
+	}
+}
+
+// Display从每个单独的goroutine接收到结果后
+// 从终端窗口输出
+func Display(results chan *Result) {
+	// 通道会一直被阻塞,直接有结果写入
+	// 一旦通道被关闭，for循环就会终止
+	for result := range results {
+		fmt.Printf("%s:\n%s\n\n", result.Field, result.Content)
 	}
 }

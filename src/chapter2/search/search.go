@@ -55,3 +55,13 @@ func Run(searchTerm string) {
 	// 在最后一个结果显示完后返回
 	Display(results)
 }
+
+// Register 调用时，会注册一个匹配器，提供给后面的程序使用
+func Register(feedType string, matcher Matcher) {
+	if _, exists := matchers[feedType]; exists {
+		log.Fatalln(feedType, "Matcher already registered")
+	}
+
+	log.Println("Register", feedType, "matcher")
+	matchers[feedType] = matcher
+}
