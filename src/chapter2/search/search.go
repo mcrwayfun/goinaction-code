@@ -29,7 +29,7 @@ func Run(searchTerm string) {
 	// 为每个数据源启动一个goroutine来查找结果
 	for _, feed := range feeds {
 		// 获取一个匹配器用于查找
-		matcher, exists := matchers[feeds.Type]
+		matcher, exists := matchers[feed.Type]
 		if !exists {
 			matcher = matchers["default"]
 		}
