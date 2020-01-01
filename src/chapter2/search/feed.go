@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-const dataFile = "data/data.json"
+const dataFile = "src/chapter2/data/data.json"
 
 // Feed 包含了我们需要处理的数据源的信息
 type Feed struct {

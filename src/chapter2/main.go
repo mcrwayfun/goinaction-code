@@ -16,5 +16,5 @@ func init() {
 // main 是整个程序的入口
 func main() {
 	// 使用特定的项做搜索
-	search.Run("president")
+	search.Run("UNICEF")
 }
